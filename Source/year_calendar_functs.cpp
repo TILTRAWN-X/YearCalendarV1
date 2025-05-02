@@ -1,8 +1,5 @@
 #include "../Header/year_calendar_functs.h"
-#include <cctype>
-#include <iostream>
 #include <ostream>
-#include <string>
 
 bool InputVerrifier(std::string input_to_verrif, short signed int brl_chbr)
 {
@@ -232,5 +229,25 @@ void DayPrinter()
   for (size_t i{}; i < 7; i++)
   {
     std::cout << i + 1 << ": " << week[i] << std::endl;
+  }
+}
+
+std::string MonthPrinter(size_t mounth_nbr)
+{
+  std::string months[]{"January", "February", "March", "April", "May", "June", "July", "August", "September", "October", 
+    "November", "December"};
+
+  return months[mounth_nbr];
+}
+
+void YearShow(std::string usr_year, std::string usr_1st_day)
+{
+  std::cout << "Calendar for " << usr_year << "." << std::endl;
+
+  for (size_t i{}; i < 11; i++)
+  {
+    MonthPrinter(i);
+
+    
   }
 }

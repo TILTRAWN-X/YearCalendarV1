@@ -32,5 +32,11 @@ int main()
 
   DayManager(first_day_year);
 
+  std::cout << "Calendar for " << usr_year << std::endl;
+
+  std::cout << "<<++================================+++>>" << std::endl;
+
+  YearShow(usr_year, first_day_year);
+
   return 0;
 }
