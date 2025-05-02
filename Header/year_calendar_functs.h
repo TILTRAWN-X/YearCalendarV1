@@ -14,4 +14,6 @@ void YearManager(std::string &r_usr_year);
 
 void DayManager(std::string &r_usr_1st_day);
 
+void DayPrinter();
+
 #endif

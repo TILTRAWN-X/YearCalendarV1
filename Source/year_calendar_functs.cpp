@@ -1,5 +1,7 @@
 #include "../Header/year_calendar_functs.h"
 #include <cctype>
+#include <iostream>
+#include <ostream>
 #include <string>
 
 bool InputVerrifier(std::string input_to_verrif, short signed int brl_chbr)
@@ -52,7 +54,7 @@ bool InputVerrifier(std::string input_to_verrif, short signed int brl_chbr)
       }
       
       break;
-      
+
     case 2:
       if (input_to_verrif == "Y" || input_to_verrif == "y")
     {
@@ -160,9 +162,7 @@ void YearManager(std::string &r_usr_year)
 
 void DayManager(std::string &r_usr_1st_day)
 {
-  std::string usr_cfrm;
-
-  std::string week[]{"Mon", "Tue", "Wed", "Thu", "Fry", "Sat", "Sun"};
+  std::string week[]{"Mon", "Tue", "Wed", "Thu", "Fry", "Sat", "Sun"}, usr_cfrm{};
 
   while (!InputVerrifier(r_usr_1st_day, 1))
   {
@@ -170,13 +170,67 @@ void DayManager(std::string &r_usr_1st_day)
 
     std::cout << "Chose the day with a single digit in range [1 | 7]." << std::endl;
 
-    for (size_t i{}; i < 7; i++)
-    {
-      std::cout << i + 1 << ": " << week[i] << std::endl; 
-    }
+    DayPrinter();
   
     std::cout << "1st Day: ";
 
     std::cin >> r_usr_1st_day; std::cout << std::endl;
+  }
+
+  std::cout << "You chose " << week[std::stoi(r_usr_1st_day) - 1] << std::endl;
+
+  std::cout << "You take it ? [Y | N]: ";
+
+  std::cin >> usr_cfrm;std::cout << std::endl;
+
+  while (!InputVerrifier(usr_cfrm, 2))
+  {
+    if (usr_cfrm == "N" || usr_cfrm == "n")
+    {
+      std::cout << "Youd' like another day ? No wory." << std::endl;
+
+      DayPrinter();
+
+      std::cout << "Enter your day: ";
+
+      std::cin >> r_usr_1st_day;std::cout << std::endl;
+
+      while (!InputVerrifier(r_usr_1st_day, 1))
+      {
+        ErrorDisplayer(0);
+
+        std::cout << "Enter with only one digit between [1 | 7]: ";
+
+        std::cin >> r_usr_1st_day;
+      }
+
+      std::cout << "You chose " << r_usr_1st_day << " as the year you want it ?\n";
+
+      std::cout << "[Y | N]: ";
+
+      std::cin >> usr_cfrm; std::cout << std::endl;
+    }
+
+    else if ((usr_cfrm != "N" || usr_cfrm != "n") || usr_cfrm.length() > 1)
+    {
+      ErrorDisplayer(0);
+
+      std::cout << "You chose " << r_usr_1st_day << " as the year you want it ?\n";
+
+      std::cout << "[Y | N]: ";
+
+      std::cin >> usr_cfrm; std::cout << std::endl;
+    }
+
+  }
+}
+
+void DayPrinter()
+{
+  std::string week[]{"Mon", "Tue", "Wed", "Thu", "Fry", "Sat", "Sun"};
+
+  for (size_t i{}; i < 7; i++)
+  {
+    std::cout << i + 1 << ": " << week[i] << std::endl;
   }
 }
