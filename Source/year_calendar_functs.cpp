@@ -1,4 +1,5 @@
 #include "../Header/year_calendar_functs.h"
+#include <string>
 
 bool InputVerrifier(std::string input_to_verrif, short signed int brl_chbr)
 {
@@ -38,7 +39,7 @@ bool InputVerrifier(std::string input_to_verrif, short signed int brl_chbr)
     
     break;
 
-  case 1:
+  case 2:
     if (input_to_verrif == "Y" || input_to_verrif == "y")
     {
       rtn_condition = true;
@@ -101,7 +102,7 @@ void YearManager(std::string &r_usr_year)
 
   std::cin >> usr_cfrm;std::cout << std::endl;
 
-  while (!InputVerrifier(usr_cfrm, 1))
+  while (!InputVerrifier(usr_cfrm, 2))
   {
     if (usr_cfrm == "N" || usr_cfrm == "n")
     {
@@ -142,3 +143,25 @@ void YearManager(std::string &r_usr_year)
 
 }
 
+void DayManager(std::string &r_usr_1st_day)
+{
+  std::string usr_cfrm;
+
+  std::string week[]{"Mon", "Tue", "Wed", "Thu", "Fry", "Sat", "Sun"};
+
+  while (InputVerrifier(r_usr_1st_day, 1))
+  {
+    ErrorDisplayer(0);
+
+    std::cout << "Chose the day with a single digit in range [1 | 7]." << std::endl;
+
+    for (size_t i{}; i < 7; i++)
+    {
+      std::cout << i + 1 << ": " << week[i] << std::endl;
+    }
+  
+    std::cout << "1st Day: ";
+
+    std::cin >> r_usr_1st_day; std::cout << std::endl;
+  }
+}

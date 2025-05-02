@@ -12,4 +12,6 @@ void ErrorDisplayer(short signed int err_arg);
 
 void YearManager(std::string &r_usr_year);
 
+void DayManager(std::string &r_usr_1st_day);
+
 #endif
