@@ -1,4 +1,5 @@
 #include "../Header/year_calendar_functs.h"
+#include <cctype>
 #include <string>
 
 bool InputVerrifier(std::string input_to_verrif, short signed int brl_chbr)
@@ -7,52 +8,66 @@ bool InputVerrifier(std::string input_to_verrif, short signed int brl_chbr)
   
   switch (brl_chbr)
   {
-  case 0:
-    for (size_t i = 0; i < input_to_verrif.length(); i++)
-    {
-      if (i == 0 && input_to_verrif[i] == '-')
+    case 0:
+      for (size_t i = 0; i < input_to_verrif.length(); i++)
       {
-        rtn_condition = true;
+        if (i == 0 && input_to_verrif[i] == '-')
+        {
+          rtn_condition = true;
 
-        continue;
-      }
+          continue;
+        }
       
-      else if (!std::isdigit(input_to_verrif[i]) || (input_to_verrif[0] == '-' && input_to_verrif.length() > 5))
-      {
-        rtn_condition = false;
+        else if (!std::isdigit(input_to_verrif[i]) || (input_to_verrif[0] == '-' && input_to_verrif.length() > 5))
+        {
+          rtn_condition = false;
         
-        break;
-      }
+          break;
+        }
       
-      else if (!std::isdigit(input_to_verrif[i]) || (input_to_verrif[0] != '-' && input_to_verrif.length() > 4))
+        else if (!std::isdigit(input_to_verrif[i]) || (input_to_verrif[0] != '-' && input_to_verrif.length() > 4))
       {
         rtn_condition = false;
 
         break;
       }
       
-      else
-      {
-        rtn_condition = true;
+        else
+        {
+          rtn_condition = true;
+        }
       }
-    }
     
-    break;
+      break;
 
-  case 2:
-    if (input_to_verrif == "Y" || input_to_verrif == "y")
+    case 1:
+      for (size_t i{}; i < input_to_verrif.length(); i++)
+      {
+        if (input_to_verrif.length() > 1 || !std::isdigit(input_to_verrif[i]))
+        {
+          rtn_condition = false;
+
+          break;
+        }
+      }
+      
+      break;
+      
+    case 2:
+      if (input_to_verrif == "Y" || input_to_verrif == "y")
     {
       rtn_condition = true;
     }
     
-    else
+      else
     {
       rtn_condition = false;
     }
     
-    break;
-  default:
-    break;
+      break;
+
+    default:
+      break;
   }
 
   if (rtn_condition == true)
@@ -149,7 +164,7 @@ void DayManager(std::string &r_usr_1st_day)
 
   std::string week[]{"Mon", "Tue", "Wed", "Thu", "Fry", "Sat", "Sun"};
 
-  while (InputVerrifier(r_usr_1st_day, 1))
+  while (!InputVerrifier(r_usr_1st_day, 1))
   {
     ErrorDisplayer(0);
 
@@ -157,7 +172,7 @@ void DayManager(std::string &r_usr_1st_day)
 
     for (size_t i{}; i < 7; i++)
     {
-      std::cout << i + 1 << ": " << week[i] << std::endl;
+      std::cout << i + 1 << ": " << week[i] << std::endl; 
     }
   
     std::cout << "1st Day: ";
