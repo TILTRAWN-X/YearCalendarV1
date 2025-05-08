@@ -1,5 +1,1 @@
-cmake_install.cmake
-CMakeCahe.txt
-CMakeFiles/
-Makefile
-.cmake/
+out/buidl
