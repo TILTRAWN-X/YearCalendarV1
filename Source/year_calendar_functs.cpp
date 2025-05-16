@@ -163,13 +163,13 @@ void YearManager(std::string &r_usr_year)
 
 void DayManager(std::string &r_usr_1st_day)
 {
-  std::string week[]{"Mon", "Tue", "Wed", "Thu", "Fry", "Sat", "Sun"}, usr_cfrm{};
+  std::string week[]{"Monday", "Tuesday", "Wednesday", "Thursday", "Fryday", "Saturday", "Sunday"}, usr_cfrm{};
 
   while (!InputVerrifier(r_usr_1st_day, 1))
   {
     ErrorDisplayer(0);
 
-    std::cout << "Chose the day with a single digit in range [1 | 7]." << std::endl;
+    std::cout << "Chose the day with a single digit in range [1 to 7]." << std::endl;
 
     DayPrinter();
   
@@ -216,7 +216,7 @@ void DayManager(std::string &r_usr_1st_day)
     {
       ErrorDisplayer(0);
 
-      std::cout << "You chose " << r_usr_1st_day << " as the year you want it ?\n";
+      std::cout << "You chose " << week[stoi(r_usr_1st_day)] << " as the first day you want it ?\n";
 
       std::cout << "[Y | N]: ";
 
@@ -252,7 +252,7 @@ void YearShow(std::string usr_year, std::string usr_1st_day)
 
   for (size_t i{}; i < 11; i++)
   {
-    int day_placement{std::stoi(usr_1st_day)};
+    //int day_placement{std::stoi(usr_1st_day)};
 
     std::cout << MonthPrinter(i) << std::endl;
     
@@ -272,7 +272,7 @@ void DayInMonthPrint(int usr_1st_day, int year_in, int mounth_in)
 {
   int max_day = DayInMonthQtt(year_in, mounth_in);
 
-  for (size_t i{}; i < max_day; i++)
+  for (int i{}; i < max_day; i++)
   {
     
   }
