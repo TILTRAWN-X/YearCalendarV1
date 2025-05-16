@@ -1,5 +1,6 @@
 #include "../Header/year_calendar_functs.h"
-#include <cctype>
+#include <cstddef>
+#include <iomanip>
 #include <iostream>
 #include <ostream>
 #include <string>
@@ -233,4 +234,90 @@ void DayPrinter()
   {
     std::cout << i + 1 << ": " << week[i] << std::endl;
   }
+}
+
+std::string MonthPrinter(size_t mounth_nbr)
+{
+  std::string months[]{"January", "February", "March", "April", "May", "June", "July", "August", "September", "October", 
+    "November", "December"};
+
+  return months[mounth_nbr];
+}
+
+void YearShow(std::string usr_year, std::string usr_1st_day)
+{
+  std::cout << "Calendar for " << usr_year << "." << std::endl;
+
+  std::string week[]{"Mon", "Tue", "Wed", "Thu", "Fry", "Sat", "Sun"};
+
+  for (size_t i{}; i < 11; i++)
+  {
+    int day_placement{std::stoi(usr_1st_day)};
+
+    std::cout << MonthPrinter(i) << std::endl;
+    
+    for (size_t i{}; i < 6; i++)
+    {
+      std::cout << week[i] << std::setw(15);
+    }
+    
+    std::cout << std::endl << std::setw(0);
+    
+    DayInMonthPrint(std::stoi(usr_1st_day),  std::stoi(usr_year), i);
+  }
+
+}
+
+void DayInMonthPrint(int usr_1st_day, int year_in, int mounth_in)
+{
+  int max_day = DayInMonthQtt(year_in, mounth_in);
+
+  for (size_t i{}; i < max_day; i++)
+  {
+    
+  }
+}
+
+int DayInMonthQtt(int year_in, int actu_month)
+{
+  int day_in_mounth_max{}, div_nbr[]{4, 100, 400};
+
+  switch (actu_month)
+  {
+    case 0: case 2: case 4: case 6: case 7: case 9: case 11:
+      day_in_mounth_max = 31;
+      
+      break;
+    
+    case 3: case 5: case 8: case 10:
+      day_in_mounth_max = 30;
+
+      break;
+
+    case 1:
+       if (year_in % div_nbr[0] == 0 && year_in % div_nbr[1] != 0)
+       {
+          day_in_mounth_max = 29;
+       }
+       
+       else if (year_in % div_nbr[0] == 0 && year_in % div_nbr[1] == 0)
+       {
+          if (year_in % div_nbr[2] == 0)
+          {
+            day_in_mounth_max = 29;
+          }
+          
+          else
+          {
+            day_in_mounth_max = 28;
+          }
+       }
+
+       break;
+
+    default:
+      break;
+  }
+
+  return day_in_mounth_max;
 }
