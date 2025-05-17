@@ -6,7 +6,7 @@ project(YearCalendarV1)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
 
-set(CMAKE_CXX_FLAGS "-O3 -Wall")
+set(CMAKE_CXX_FLAGS "-O0 -Wall")
 
 file(GLOB CC_SOURCE "${PROJECT_SOURCE_DIR}/Source/*.cc")
 

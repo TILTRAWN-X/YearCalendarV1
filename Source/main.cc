@@ -5,7 +5,7 @@
 
 int main()
 {
-  std::string usr_year{}, usr_day_placement{}, week[]{"Mon", "Tue", "Wed", "Thu", "Fry", "Sat", "Sun"};
+  std::string usr_year{}, usr_first_day_pos{}, week[]{"Mon", "Tue", "Wed", "Thu", "Fry", "Sat", "Sun"};
 
   std::cout << "Welcome to the manual year calendar !" << std::endl;
 
@@ -28,15 +28,15 @@ int main()
   
   std::cout << "1st Day: ";
 
-  std::cin >> usr_day_placement;
+  std::cin >> usr_first_day_pos;
 
-  DayManager(usr_day_placement);
+  DayManager(usr_first_day_pos);
 
   std::cout << "Calendar for " << usr_year << std::endl;
 
   std::cout << "<<++================================+++>>" << std::endl;
 
-  YearShow(usr_year, usr_day_placement);
+  YearShow(usr_year, usr_first_day_pos);
 
   return 0;
 }
