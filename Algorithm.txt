@@ -1,0 +1,21 @@
+DayInMounthPrint (integer usr_day_placement, integer year_in, integer mounth_in):
+[
+  integer max_day = DayInMonthQtt(year_in, mounth_in)
+
+  integer day_nbr = 1
+
+  for (integer i{}, i < max_day, i++)
+  {
+    if ((i + 1) < usr_day_placement)
+    {
+      print(push(std_push), ' ')
+    }
+
+    switch (usr_day_placement)
+    {
+      case 8:
+        print(toline)
+        usr_day_placement = 1
+    }
+  }
+]

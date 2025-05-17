@@ -8,8 +8,8 @@ set(CMAKE_CXX_STANDARD_REQUIRED True)
 
 set(CMAKE_CXX_FLAGS "-O3 -Wall")
 
-file(GLOB CPP_SOURCE "${PROJECT_SOURCE_DIR}/Source/*.cpp")
+file(GLOB CC_SOURCE "${PROJECT_SOURCE_DIR}/Source/*.cc")
 
 include_directories(${PROJECT_SOURCE_DIR}/Header)
 
-add_executable(${PROJECT_NAME} ${CPP_SOURCE})
+add_executable(${PROJECT_NAME} ${CC_SOURCE})

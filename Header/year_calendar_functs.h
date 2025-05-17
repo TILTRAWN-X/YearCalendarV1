@@ -7,11 +7,11 @@
 #include <iostream>
 #include <string>
 
-void DayInMonthPrint(int usr_1st_day, int year_in,int mounth_in);
+void DayInMonthPrint(int usr_day_placement, int year_in,int mounth_in);
 
 int DayInMonthQtt(int year_in, int actu_month);
 
-void DayManager(std::string &r_usr_1st_day);
+void DayManager(std::string &usr_day_placement);
 
 void DayPrinter();
 
@@ -23,6 +23,6 @@ std::string MonthPrinter(size_t mounth_nbr);
 
 void YearManager(std::string &r_usr_year);
 
-void YearShow(std::string usr_year, std::string usr_1st_day);
+void YearShow(std::string usr_year, std::string usr_day_placement);
 
 #endif

@@ -5,6 +5,8 @@
 #include <ostream>
 #include <string>
 
+const size_t global_width{15};
+
 bool InputVerrifier(std::string input_to_verrif, short signed int brl_chbr)
 {
   bool rtn_condition{true};
@@ -90,7 +92,7 @@ void ErrorDisplayer(short signed int err_arg)
   switch (err_arg)
   {
   case 0:
-    std::cout << std::endl << "ERROR_001: wrong_input_format" << std::endl;
+    std::cout << '\n' << "ERROR_001: wrong_input_format" << '\n';
     break;
 
   case 1:
@@ -111,24 +113,24 @@ void YearManager(std::string &r_usr_year)
 
     std::cout << "Enter a year in this format [yyyy | -yyyy]: ";
 
-    std::cin >> r_usr_year; std::cout << std::endl;
+    std::cin >> r_usr_year; std::cout << '\n';
   }
 
-  std::cout << "You chose " << r_usr_year << " as the year you want it ?" << std::endl;
+  std::cout << "You chose " << r_usr_year << " as the year you want it ?" << '\n';
 
   std::cout << "[Y | N]: ";
 
-  std::cin >> usr_cfrm;std::cout << std::endl;
+  std::cin >> usr_cfrm;std::cout << '\n';
 
   while (!InputVerrifier(usr_cfrm, 2))
   {
     if (usr_cfrm == "N" || usr_cfrm == "n")
     {
-      std::cout << "You don't want this year ? Got you !" << std::endl;
+      std::cout << "You don't want this year ? Got you !" << '\n';
 
       std::cout << "Enter your year like [yyyy | -yyyy]: ";
 
-      std::cin >> r_usr_year;std::cout << std::endl;
+      std::cin >> r_usr_year;std::cout << '\n';
 
       while (!InputVerrifier(r_usr_year, 0))
       {
@@ -143,7 +145,7 @@ void YearManager(std::string &r_usr_year)
 
       std::cout << "[Y | N]: ";
 
-      std::cin >> usr_cfrm; std::cout << std::endl;
+      std::cin >> usr_cfrm; std::cout << '\n';
     }
 
     else if ((usr_cfrm != "N" || usr_cfrm != "n") || usr_cfrm.length() > 1)
@@ -154,73 +156,73 @@ void YearManager(std::string &r_usr_year)
 
       std::cout << "[Y | N]: ";
 
-      std::cin >> usr_cfrm; std::cout << std::endl;
+      std::cin >> usr_cfrm; std::cout << '\n';
     }
 
   }
 
 }
 
-void DayManager(std::string &r_usr_1st_day)
+void DayManager(std::string &usr_day_placement)
 {
   std::string week[]{"Monday", "Tuesday", "Wednesday", "Thursday", "Fryday", "Saturday", "Sunday"}, usr_cfrm{};
 
-  while (!InputVerrifier(r_usr_1st_day, 1))
+  while (!InputVerrifier(usr_day_placement, 1))
   {
     ErrorDisplayer(0);
 
-    std::cout << "Chose the day with a single digit in range [1 to 7]." << std::endl;
+    std::cout << "Chose the day with a single digit in range [1 to 7]." << '\n';
 
     DayPrinter();
   
     std::cout << "1st Day: ";
 
-    std::cin >> r_usr_1st_day; std::cout << std::endl;
+    std::cin >> usr_day_placement; std::cout << '\n';
   }
 
-  std::cout << "You chose " << week[std::stoi(r_usr_1st_day) - 1] << std::endl;
+  std::cout << "You chose " << week[std::stoi(usr_day_placement) - 1] << '\n';
 
   std::cout << "You take it ? [Y | N]: ";
 
-  std::cin >> usr_cfrm;std::cout << std::endl;
+  std::cin >> usr_cfrm;std::cout << '\n';
 
   while (!InputVerrifier(usr_cfrm, 2))
   {
     if (usr_cfrm == "N" || usr_cfrm == "n")
     {
-      std::cout << "Youd' like another day ? No wory." << std::endl;
+      std::cout << "Youd' like another day ? No wory." << '\n';
 
       DayPrinter();
 
       std::cout << "Enter your day: ";
 
-      std::cin >> r_usr_1st_day;std::cout << std::endl;
+      std::cin >> usr_day_placement;std::cout << '\n';
 
-      while (!InputVerrifier(r_usr_1st_day, 1))
+      while (!InputVerrifier(usr_day_placement, 1))
       {
         ErrorDisplayer(0);
 
         std::cout << "Enter with only one digit between [1 | 7]: ";
 
-        std::cin >> r_usr_1st_day;
+        std::cin >> usr_day_placement;
       }
 
-      std::cout << "You chose " << r_usr_1st_day << " as the year you want it ?\n";
+      std::cout << "You chose " << usr_day_placement << " as the year you want it ?\n";
 
       std::cout << "[Y | N]: ";
 
-      std::cin >> usr_cfrm; std::cout << std::endl;
+      std::cin >> usr_cfrm; std::cout << '\n';
     }
 
     else if ((usr_cfrm != "N" || usr_cfrm != "n") || usr_cfrm.length() > 1)
     {
       ErrorDisplayer(0);
 
-      std::cout << "You chose " << week[stoi(r_usr_1st_day)] << " as the first day you want it ?\n";
+      std::cout << "You chose " << week[stoi(usr_day_placement)] << " as the first day you want it ?\n";
 
       std::cout << "[Y | N]: ";
 
-      std::cin >> usr_cfrm; std::cout << std::endl;
+      std::cin >> usr_cfrm; std::cout << '\n';
     }
 
   }
@@ -232,7 +234,7 @@ void DayPrinter()
 
   for (size_t i{}; i < 7; i++)
   {
-    std::cout << i + 1 << ": " << week[i] << std::endl;
+    std::cout << i + 1 << ": " << week[i] << '\n';
   }
 }
 
@@ -244,38 +246,60 @@ std::string MonthPrinter(size_t mounth_nbr)
   return months[mounth_nbr];
 }
 
-void YearShow(std::string usr_year, std::string usr_1st_day)
+void YearShow(std::string usr_year, std::string usr_day_placement)
 {
-  std::cout << "Calendar for " << usr_year << "." << std::endl;
+  std::cout << "Calendar for " << usr_year << '\n';
 
   std::string week[]{"Mon", "Tue", "Wed", "Thu", "Fry", "Sat", "Sun"};
 
   for (size_t i{}; i < 11; i++)
   {
-    //int day_placement{std::stoi(usr_1st_day)};
+    int day_placement{std::stoi(usr_day_placement)};
 
-    std::cout << MonthPrinter(i) << std::endl;
+    std::cout << MonthPrinter(i) << '\n';
     
-    for (size_t i{}; i < 6; i++)
+    for (size_t i{}; i < 7; i++)
     {
-      std::cout << week[i] << std::setw(15);
+      std::cout << std::setw(global_width) << std::left << week[i];
     }
     
-    std::cout << std::endl << std::setw(0);
+    std::cout << '\n' << std::setw(0);
     
-    DayInMonthPrint(std::stoi(usr_1st_day),  std::stoi(usr_year), i);
+    DayInMonthPrint(day_placement,  std::stoi(usr_year), i);
+
+    std::cout << '\n';
   }
 
 }
 
-void DayInMonthPrint(int usr_1st_day, int year_in, int mounth_in)
+void DayInMonthPrint(int usr_day_placement, int year_in, int mounth_in)
 {
-  int max_day = DayInMonthQtt(year_in, mounth_in);
+  int max_day = DayInMonthQtt(year_in, mounth_in), day_nbr{1};
 
-  for (int i{}; i < max_day; i++)
+  for (int i = 0; i < max_day; i++)
   {
+    if ((i + 1) < usr_day_placement)
+    {
+      std::cout << std::setw(global_width) << std::left << ' ';
+    }
+
+    else if (usr_day_placement < 8)
+    {
+      std::cout << std::setw(global_width) << std::left << day_nbr;
+
+      usr_day_placement++; day_nbr++;
+    }
+    
+    
+    else if (usr_day_placement >= 6)
+    {
+      usr_day_placement = 1;
+      
+      std::cout << '\n';
+    }
     
   }
+  
 }
 
 int DayInMonthQtt(int year_in, int actu_month)
