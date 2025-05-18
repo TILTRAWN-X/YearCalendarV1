@@ -95,9 +95,6 @@ void ErrorDisplayer(short signed int err_arg)
     std::cout << '\n' << "ERROR_001: wrong_input_format" << '\n';
     break;
 
-  case 1:
-    
-    break;
   default:
     break;
   }
@@ -165,7 +162,7 @@ void YearManager(std::string &r_usr_year)
 
 void DayManager(std::string &day_pos)
 {
-  std::string week[]{"Monday", "Tuesday", "Wednesday", "Thursday", "Fryday", "Saturday", "Sunday"}, usr_cfrm{};
+  std::string day_name[]{"Monday", "Tuesday", "Wednesday", "Thursday", "Fryday", "Saturday", "Sunday"}, usr_cfrm{};
 
   while (!InputVerrifier(day_pos, 1))
   {
@@ -173,14 +170,18 @@ void DayManager(std::string &day_pos)
 
     std::cout << "Chose the day with a single digit in range [1 to 7]." << '\n';
 
-    DayPrinter();
+    for (size_t i = 0; i < 7; i++)
+    {
+      std::cout << DayPrinter(i) << '\n';
+    }
+    
   
     std::cout << "1st Day: ";
 
     std::cin >> day_pos; std::cout << '\n';
   }
 
-  std::cout << "You chose " << week[std::stoi(day_pos) - 1] << '\n';
+  std::cout << "You chose " << day_name[std::stoi(day_pos) - 1] << '\n';
 
   std::cout << "You take it ? [Y | N]: ";
 
@@ -192,7 +193,10 @@ void DayManager(std::string &day_pos)
     {
       std::cout << "Youd' like another day ? No wory." << '\n';
 
-      DayPrinter();
+      for (size_t i = 0; i < 7; i++)
+      {
+        std::cout << DayPrinter(i) << '\n';
+      }
 
       std::cout << "Enter your day: ";
 
@@ -218,7 +222,7 @@ void DayManager(std::string &day_pos)
     {
       ErrorDisplayer(0);
 
-      std::cout << "You chose " << week[stoi(day_pos)] << " as the first day you want it ?\n";
+      std::cout << "You chose " << day_name[stoi(day_pos)] << " as the first day you want it ?\n";
 
       std::cout << "[Y | N]: ";
 
@@ -229,14 +233,11 @@ void DayManager(std::string &day_pos)
 
 }
 
-void DayPrinter()
+std::string DayPrinter(size_t day_nbr)
 {
-  std::string week[]{"Mon", "Tue", "Wed", "Thu", "Fry", "Sat", "Sun"};
+  std::string day_name[]{"Mon", "Tue", "Wed", "Thu", "Fry", "Sat", "Sun"};
 
-  for (size_t i{}; i < 7; i++)
-  {
-    std::cout << i + 1 << ": " << week[i] << '\n';
-  }
+  return day_name[day_nbr];
 }
 
 std::string MonthPrinter(size_t mounth_nbr)
@@ -247,9 +248,14 @@ std::string MonthPrinter(size_t mounth_nbr)
   return months[mounth_nbr];
 }
 
+/*init the month and the dayname like this :
+---------------------------------------------------------------------------------------------
+Mounth
+Mon            Tue            Wed            Thu            Fry            Sat            Sun
+*/
 void YearShow(std::string usr_year, std::string day_pos)
 {
-  std::string week[]{"Mon", "Tue", "Wed", "Thu", "Fry", "Sat", "Sun"};
+  std::string day_name[]{"Mon", "Tue", "Wed", "Thu", "Fry", "Sat", "Sun"};
   
   int temp_val{std::stoi(day_pos)};
   
@@ -261,7 +267,7 @@ void YearShow(std::string usr_year, std::string day_pos)
     
     for (size_t i{}; i < 7; i++)
     {
-      std::cout << std::setw(global_width) << std::left << week[i];
+      std::cout << std::setw(global_width) << std::left << day_name[i];
     }
     
     std::cout << '\n' << std::setw(0);
@@ -272,6 +278,11 @@ void YearShow(std::string usr_year, std::string day_pos)
   }
 
 }
+
+/*Prin the day number uder it's coresponding dayname like this :
+Mon            Tue            Wed            Thu            Fry            Sat            Sun
+                              1              2              3              4              5
+*/
 
 void DayInMonthPrint(int &r_day_pos, int year_in, int mounth_in)
 {

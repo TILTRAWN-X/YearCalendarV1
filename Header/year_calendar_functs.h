@@ -9,7 +9,7 @@ int DayInMonthQtt(int year_in, int actu_month);
 
 void DayManager(std::string &day_pos);
 
-void DayPrinter();
+std::string DayPrinter(size_t day_nbr);
 
 void ErrorDisplayer(short signed int err_arg);
 
