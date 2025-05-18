@@ -226,6 +226,7 @@ void DayManager(std::string &day_pos)
     }
 
   }
+  
 }
 
 void DayPrinter()
@@ -248,15 +249,15 @@ std::string MonthPrinter(size_t mounth_nbr)
 
 void YearShow(std::string usr_year, std::string day_pos)
 {
-  std::cout << "Calendar for " << usr_year << '\n';
-
   std::string week[]{"Mon", "Tue", "Wed", "Thu", "Fry", "Sat", "Sun"};
+  
+  int temp_val{std::stoi(day_pos)};
+  
+  int &r_day_placement {temp_val};
 
   for (size_t i{}; i < 12; i++)
   {
-    int day_placement{std::stoi(day_pos)};
-
-    std::cout << MonthPrinter(i) << '\n';
+    std::cout << std::string(93, '-') << '\n' << MonthPrinter(i) << '\n';
     
     for (size_t i{}; i < 7; i++)
     {
@@ -265,18 +266,18 @@ void YearShow(std::string usr_year, std::string day_pos)
     
     std::cout << '\n' << std::setw(0);
     
-    DayInMonthPrint(day_placement,  std::stoi(usr_year), i);
+    DayInMonthPrint(r_day_placement,  std::stoi(usr_year), i);
 
     std::cout << '\n';
   }
 
 }
 
-void DayInMonthPrint(int day_pos, int year_in, int mounth_in)
+void DayInMonthPrint(int &r_day_pos, int year_in, int mounth_in)
 {
   int max_day = DayInMonthQtt(year_in, mounth_in);
 
-  for (int i = 1; i < day_pos; i++)
+  for (int i = 1; i < r_day_pos; i++)
   {
     std::cout << std::setw(global_width) << std::left << ' ';
   }
@@ -284,22 +285,22 @@ void DayInMonthPrint(int day_pos, int year_in, int mounth_in)
 
   for (int current_day = 1; current_day <= max_day; current_day++)
   {
-    if (day_pos > 7)
+    if (r_day_pos > 7)
     {
       std::cout << '\n';
 
       std::cout << std::setw(global_width) << std::left << current_day ;
 
-      day_pos = 1;
+      r_day_pos = 1;
 
-      day_pos++;
+      r_day_pos++;
     }
     
     else
     {
       std::cout << std::setw(global_width) << std::left << current_day ;
 
-      day_pos++;
+      r_day_pos++;
     }
     
   }

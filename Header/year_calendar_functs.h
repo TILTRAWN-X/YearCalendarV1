@@ -1,13 +1,9 @@
 #ifndef YEAR_CALENDAR_FUNCTS_H
 #define YEAR_CALENDAR_FUNCTS_H
 
-#include <cctype>
-#include <cstddef>
-#include <iomanip>
-#include <iostream>
 #include <string>
 
-void DayInMonthPrint(int day_pos, int year_in,int mounth_in);
+void DayInMonthPrint(int &r_day_pos, int year_in,int mounth_in);
 
 int DayInMonthQtt(int year_in, int actu_month);
 
