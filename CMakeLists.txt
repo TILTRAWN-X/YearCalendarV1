@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.21.0)
 
-project(YearCalendarV1)
+project(YearCalendar)
 
 
 set(CMAKE_CXX_STANDARD 17)
