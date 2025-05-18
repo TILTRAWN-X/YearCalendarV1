@@ -226,7 +226,7 @@ void DayManager(std::string &day_pos)
     }
 
   }
-  
+
 }
 
 void DayPrinter()
@@ -342,6 +342,11 @@ int DayInMonthQtt(int year_in, int actu_month)
           }
        }
 
+       else
+       {
+          day_in_mounth_max = 28;
+       }
+       
        break;
 
     default:

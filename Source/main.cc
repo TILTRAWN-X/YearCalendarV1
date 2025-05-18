@@ -34,8 +34,6 @@ int main()
 
   std::cout << "Calendar for " << usr_year << std::endl;
 
-  std::cout << "<<++=========+++>>" << std::endl;
-
   YearShow(usr_year, usr_first_day_pos);
 
   return 0;
