@@ -13,5 +13,3 @@ file(GLOB CPP_SOURCE "${PROJECT_SOURCE_DIR}/Source/*.cpp")
 include_directories(${PROJECT_SOURCE_DIR}/Header)
 
 add_executable(${PROJECT_NAME} ${CPP_SOURCE})
-
-add_library(YearCalendarFcts SHARED Source/year_calendar_functs.cpp)
