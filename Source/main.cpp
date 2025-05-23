@@ -14,6 +14,7 @@ int main()
 
   std::cin >> usr_year;std::cout << std::endl; 
 
+  //Verifie and validate user input.
   YearManager(usr_year);
 
   std::cout << "Now that the year is set, ";
@@ -29,10 +30,12 @@ int main()
 
   std::cin >> usr_first_day_pos;
 
+  //Alike the Year manager but here it also help to set up the fisrt day placement.
   DayManager(usr_first_day_pos);
 
   std::cout << "Calendar for " << usr_year << std::endl;
 
+  //Print out the year based on the year(leap or not) and the first day of it.
   YearShow(usr_year, usr_first_day_pos);
 
   return 0;
